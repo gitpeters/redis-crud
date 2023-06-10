@@ -4,6 +4,7 @@ import com.peters.redis.dto.UserRequest;
 import com.peters.redis.dto.UserResponse;
 import com.peters.redis.entity.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
@@ -73,6 +74,8 @@ public class DaoImpl implements Dao{
                     .email(user.getEmail())
                     .age(user.getAge())
                     .build();
+            System.out.println("Fetch User from database");
+
             return ResponseEntity.ok().body(response);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(new UserResponse("Failed", "No user found for this id::"+id));

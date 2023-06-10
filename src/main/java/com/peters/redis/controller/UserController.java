@@ -4,6 +4,7 @@ import com.peters.redis.dto.UserRequest;
 import com.peters.redis.dto.UserResponse;
 import com.peters.redis.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +29,9 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<UserResponse> getUserById(@PathVariable("id") Long id){
-        return userService.fetUserById(id);
+//    @Cacheable(value = "userCache", key="#id") //Used annotation for caching
+    public UserResponse getUserById(@PathVariable("id") Long id){
+        return userService.fetUserById(id).getBody();
     }
 
     @DeleteMapping("/delete/{id}")

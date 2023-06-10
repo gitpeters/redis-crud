@@ -5,6 +5,7 @@ import com.peters.redis.dto.UserResponse;
 import com.peters.redis.entity.User;
 import com.peters.redis.repository.Dao;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User{
+public class User {
     private Long id;
     private String firstName;
     private String lastName;
